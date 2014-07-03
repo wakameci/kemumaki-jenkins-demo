@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<org.jenkinsci.plugins.managedscripts.ScriptBuildStepConfigProvider plugin="managed-scripts@1.1">
+  <configs>
+    <entry>
+      <string>org.jenkinsci.plugins.managedscripts.ScriptConfig1373954505274</string>
+      <org.jenkinsci.plugins.managedscripts.ScriptConfig>
+        <id>org.jenkinsci.plugins.managedscripts.ScriptConfig1373954505274</id>
+        <name>kemumaki.setup</name>
+        <comment></comment>
+        <content>declare kemumaki_path=${KEMUMAKI_DIR}
+[[ -d &quot;${kemumaki_path}&quot; ]] || git clone https://github.com/axsh/kemumaki.git ${kemumaki_path}
+
+cd ${kemumaki_path}
+
+cat &lt;&lt;END
+###################################################
+# Check for git merge failure of branch -&gt; master
+###################################################
+END
+
+declare revision=$(git ls-remote https://github.com/axsh/kemumaki.git | egrep &quot;[0-9a-f]{40}[[:space:]]+refs/.*?/master&quot; | cut -c1-40)
+git fetch origin &amp;&amp; git fetch --tags origin &amp;&amp; git reset --hard ${revision}
+
+git submodule update --init --recursive
+</content>
+        <args/>
+      </org.jenkinsci.plugins.managedscripts.ScriptConfig>
+    </entry>
+    <entry>
+      <string>org.jenkinsci.plugins.managedscripts.ScriptConfig1373954034176</string>
+      <org.jenkinsci.plugins.managedscripts.ScriptConfig>
+        <id>org.jenkinsci.plugins.managedscripts.ScriptConfig1373954034176</id>
+        <name>kemumaki.rpmbuild</name>
+        <comment></comment>
+        <content>echo &quot;hello world&quot;[[ -n &quot;${GIT_BRANCH}&quot; ]] || exit 1
+
+export RUBY_MIRROR_SITE=${RUBY_MIRROR_SITE}
+env | sort
+
+sudo PATH=$PATH -E env | sort
+sudo PATH=$PATH -E ${KEMUMAKI_DIR}/bin/kemumaki rpmbuild
+</content>
+        <args/>
+      </org.jenkinsci.plugins.managedscripts.ScriptConfig>
+    </entry>
+  </configs>
+</org.jenkinsci.plugins.managedscripts.ScriptBuildStepConfigProvider>

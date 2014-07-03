@@ -2,6 +2,55 @@
 <org.jenkinsci.plugins.managedscripts.ScriptBuildStepConfigProvider plugin="managed-scripts@1.1">
   <configs>
     <entry>
+      <string>org.jenkinsci.plugins.managedscripts.ScriptConfig1404403132243</string>
+      <org.jenkinsci.plugins.managedscripts.ScriptConfig>
+        <id>org.jenkinsci.plugins.managedscripts.ScriptConfig1404403132243</id>
+        <name>to-s3.pub</name>
+        <comment></comment>
+        <content>#!/bin/bash
+#
+# requires:
+#  bash
+#  s3cmd
+#
+set -e
+set -x
+
+[[ -n &quot;${GIT_BRANCH}&quot; ]] || exit 1
+[[ -n &quot;${RPMBUILD_SRC_JOB}&quot; ]] || exit 1
+
+s3_base_uri=s3://dlc.wakame.jp/packages/rhel/6
+s3_cmd_opts=&quot;--acl-public --check-md5&quot;
+release_id=$(cd /var/lib/jenkins/workspace/${RPMBUILD_SRC_JOB} &amp;&amp; /var/lib/jenkins/workspace/${RPMBUILD_SRC_JOB}/rpmbuild/helpers/gen-release-id.sh)
+
+cd /var/www/html/axsh/wakame/${GIT_BRANCH}
+
+cat &lt;&lt;_COMMENT_
+s3cmd sync ${s3_cmd_opts} ${release_id}  ${s3_base_uri}/${GIT_BRANCH}/
+s3cmd sync ${s3_cmd_opts} ${release_id}/ ${s3_base_uri}/${GIT_BRANCH}/current/ --delete-removed ${s3_cmd_opts}
+_COMMENT_
+</content>
+        <args/>
+      </org.jenkinsci.plugins.managedscripts.ScriptConfig>
+    </entry>
+    <entry>
+      <string>org.jenkinsci.plugins.managedscripts.ScriptConfig1373954034176</string>
+      <org.jenkinsci.plugins.managedscripts.ScriptConfig>
+        <id>org.jenkinsci.plugins.managedscripts.ScriptConfig1373954034176</id>
+        <name>kemumaki.rpmbuild</name>
+        <comment></comment>
+        <content>echo &quot;hello world&quot;[[ -n &quot;${GIT_BRANCH}&quot; ]] || exit 1
+
+export RUBY_MIRROR_SITE=${RUBY_MIRROR_SITE}
+env | sort
+
+sudo PATH=$PATH -E env | sort
+sudo PATH=$PATH -E ${KEMUMAKI_DIR}/bin/kemumaki rpmbuild
+</content>
+        <args/>
+      </org.jenkinsci.plugins.managedscripts.ScriptConfig>
+    </entry>
+    <entry>
       <string>org.jenkinsci.plugins.managedscripts.ScriptConfig1373954505274</string>
       <org.jenkinsci.plugins.managedscripts.ScriptConfig>
         <id>org.jenkinsci.plugins.managedscripts.ScriptConfig1373954505274</id>
@@ -27,18 +76,34 @@ git submodule update --init --recursive
       </org.jenkinsci.plugins.managedscripts.ScriptConfig>
     </entry>
     <entry>
-      <string>org.jenkinsci.plugins.managedscripts.ScriptConfig1373954034176</string>
+      <string>org.jenkinsci.plugins.managedscripts.ScriptConfig1404403245813</string>
       <org.jenkinsci.plugins.managedscripts.ScriptConfig>
-        <id>org.jenkinsci.plugins.managedscripts.ScriptConfig1373954034176</id>
-        <name>kemumaki.rpmbuild</name>
+        <id>org.jenkinsci.plugins.managedscripts.ScriptConfig1404403245813</id>
+        <name>to-s3.skeleton</name>
         <comment></comment>
-        <content>echo &quot;hello world&quot;[[ -n &quot;${GIT_BRANCH}&quot; ]] || exit 1
+        <content>#!/bin/bash
+#
+# requires:
+#  bash
+#  s3cmd
+#
+set -e
+set -x
 
-export RUBY_MIRROR_SITE=${RUBY_MIRROR_SITE}
-env | sort
+[[ -n &quot;${GIT_BRANCH}&quot; ]] || exit 1
+[[ -n &quot;${RPMBUILD_SRC_JOB}&quot; ]] || exit 1
 
-sudo PATH=$PATH -E env | sort
-sudo PATH=$PATH -E ${KEMUMAKI_DIR}/bin/kemumaki rpmbuild
+s3_base_uri=s3://skeleton.dlc.wakame.jp/packages/rhel/6
+s3_cmd_opts=&quot;--acl-public --check-md5&quot;
+#release_id=$(cd /var/lib/jenkins/workspace/${RPMBUILD_SRC_JOB} &amp;&amp; /var/lib/jenkins/workspace/${RPMBUILD_SRC_JOB}/rpmbuild/helpers/gen-release-id.sh)
+release_id=$(date +%Y%m%d%H%M%S)git$(echo 0123456)
+
+cd /var/www/html/axsh/wakame/${GIT_BRANCH}
+
+cat &lt;&lt;_COMMENT_
+s3cmd sync ${s3_cmd_opts} ${release_id}  ${s3_base_uri}/${GIT_BRANCH}/
+s3cmd sync ${s3_cmd_opts} ${release_id}/ ${s3_base_uri}/${GIT_BRANCH}/current/ --delete-removed ${s3_cmd_opts}
+_COMMENT_
 </content>
         <args/>
       </org.jenkinsci.plugins.managedscripts.ScriptConfig>

@@ -1,9 +1,14 @@
 Kemukins: Demo Jenkins Configuration
 ====================================
 
-Deployment pipeline skeleton for Wakame CI
+Deployment pipeline skeleton with [Jenkins](http://jenkins-ci.org/) for Wakame CI
+
+Features
+--------
 
 + `/var/lib/jenkins` under version control
++ [wakame-vdc](https://github.com/axsh/wakame-vdc) rpmbuild job demo
++ deployment pipeline skeleton
 
 Installation
 ------------

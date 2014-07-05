@@ -3,6 +3,8 @@ Kemukins: Demo Jenkins Configuration
 
 Deployment pipeline skeleton for Wakame CI
 
++ `/var/lib/jenkins` under version control
+
 Installation
 ------------
 
@@ -21,10 +23,8 @@ $ cd /var/lib/jenkins
 $ git checkout .
 ```
 
-Configuration
--------------
-
-`/var/lib/jenkins` under version control
+Files
+-----
 
 ### Jenkins master
 

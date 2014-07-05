@@ -76,18 +76,17 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>pwd
+      <command>umask 077
 
-umask 077
-
-rsync -avx /var/tmp/kemukins-jenkins-demo/.git /var/lib/jenkins
+rsync -avx ${WORKSPACE}/.git /var/lib/jenkins
 cd /var/lib/jenkins
 
 git status
 git checkout .
 git status
 
-cp -f /var/lib/jenkins/.ssh/kemukins-demo.pub /var/lib/jenkins/.ssh/authorized_keys</command>
+cp -f /var/lib/jenkins/.ssh/kemukins-demo.pub /var/lib/jenkins/.ssh/authorized_keys
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

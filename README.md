@@ -16,7 +16,7 @@ Configuration
 Using ssh with no pass pharse key pair
 
 + ssh_config
-  + .ssh/config
+  + `.ssh/config`
 + ssh key pair
-  + .ssh/kemukins-demo
-  + .ssh/kemukins-demo.pub
+  + `.ssh/kemukins-demo` private key
+  + `.ssh/kemukins-demo.pub` public key

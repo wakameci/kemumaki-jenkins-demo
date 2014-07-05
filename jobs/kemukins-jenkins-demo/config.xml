@@ -78,7 +78,7 @@
     <hudson.tasks.Shell>
       <command>umask 077
 
-rsync -avx ${WORKSPACE}/.git /var/lib/jenkins
+rsync -ax ${WORKSPACE}/.git /var/lib/jenkins
 cd /var/lib/jenkins
 
 git status

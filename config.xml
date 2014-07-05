@@ -102,6 +102,7 @@
         <string>5.bootstrapping</string>
         <string>6.orchestration</string>
         <string>7.smoketesting</string>
+        <string>kemukins-jenkins-demo</string>
       </jobNames>
       <jobFilters/>
       <columns>

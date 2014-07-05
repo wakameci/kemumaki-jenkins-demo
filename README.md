@@ -11,6 +11,14 @@ Build Tool
 Configuration
 -------------
 
+`/var/lib/jenkins` under version control
+
+### Jenkins master
+
++ `config.xml` core config.xml
++ `buildstep-config-files.xml` managed scripts plugin
++ `jobs/` config.xml for each job
+
 ### Jekins cluster
 
 Using ssh with no pass pharse key pair

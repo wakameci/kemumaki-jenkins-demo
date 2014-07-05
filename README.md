@@ -3,11 +3,6 @@ Kemukins: Demo Jenkins Configuration
 
 Deployment pipeline skeleton for Wakame CI
 
-Build Tool
-----------
-
-+ [kemumaki](https://github.com/axsh/kemumaki)
-
 Configuration
 -------------
 
@@ -28,3 +23,8 @@ Using ssh with no pass pharse key pair
 + ssh key pair
   + `.ssh/kemukins-demo` private key
   + `.ssh/kemukins-demo.pub` public key
+
+Build Tool
+----------
+
++ [kemumaki](https://github.com/axsh/kemumaki)

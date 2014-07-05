@@ -3,6 +3,24 @@ Kemukins: Demo Jenkins Configuration
 
 Deployment pipeline skeleton for Wakame CI
 
+Installation
+------------
+
+```
+$ su - jenkins
+```
+
+```
+$ umask 077
+```
+
+```
+$ git clone https://github.com/wakameci/kemukins-jenkins-demo.git /var/tmp/kemukins-jenkins-demo
+$ rsync -avx /var/tmp/kemukins-jenkins-demo/.git /var/lib/jenkins
+$ cd /var/lib/jenkins
+$ git checkout .
+```
+
 Configuration
 -------------
 

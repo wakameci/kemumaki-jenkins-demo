@@ -23,7 +23,7 @@ $ umask 077
 
 ```
 $ git clone https://github.com/wakameci/kemukins-jenkins-demo.git /var/tmp/kemukins-jenkins-demo
-$ rsync -avx /var/tmp/kemukins-jenkins-demo/.git /var/lib/jenkins
+$ rsync -ax /var/tmp/kemukins-jenkins-demo/.git /var/lib/jenkins
 $ cd /var/lib/jenkins
 $ git checkout .
 ```

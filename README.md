@@ -1,4 +1,4 @@
-Kemukins: Demo Jenkins Configuration
+Kemumaki: Demo Jenkins Configuration
 ====================================
 
 Deployment pipeline skeleton with [Jenkins](http://jenkins-ci.org/) for Wakame CI
@@ -22,8 +22,8 @@ $ umask 077
 ```
 
 ```
-$ git clone https://github.com/wakameci/kemukins-jenkins-demo.git /var/tmp/kemukins-jenkins-demo
-$ rsync -ax /var/tmp/kemukins-jenkins-demo/.git /var/lib/jenkins
+$ git clone https://github.com/wakameci/kemumaki-jenkins-demo.git /var/tmp/kemumaki-jenkins-demo
+$ rsync -ax /var/tmp/kemumaki-jenkins-demo/.git /var/lib/jenkins
 $ cd /var/lib/jenkins
 $ git checkout .
 ```
@@ -44,8 +44,8 @@ Using ssh with no pass pharse key pair
 + ssh_config
   + `.ssh/config`
 + ssh key pair
-  + `.ssh/kemukins-demo` private key
-  + `.ssh/kemukins-demo.pub` public key
+  + `.ssh/kemumaki-demo` private key
+  + `.ssh/kemumaki-demo.pub` public key
 
 Build Tool
 ----------

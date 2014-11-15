@@ -36,7 +36,7 @@
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>https://github.com/wakameci/kemukins-jenkins-demo.git</url>
+        <url>https://github.com/wakameci/kemumaki-jenkins-demo.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -85,7 +85,7 @@ git status
 git checkout .
 git status
 
-cp -f /var/lib/jenkins/.ssh/kemukins-demo.pub /var/lib/jenkins/.ssh/authorized_keys
+cp -f /var/lib/jenkins/.ssh/kemumaki-demo.pub /var/lib/jenkins/.ssh/authorized_keys
 </command>
     </hudson.tasks.Shell>
   </builders>

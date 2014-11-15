@@ -1,4 +1,4 @@
-Kemukins: Demo Jenkins Configuration
+Kemumaki: Demo Jenkins Configuration
 ====================================
 
 Deployment pipeline skeleton with [Jenkins](http://jenkins-ci.org/) for Wakame CI
